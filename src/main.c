@@ -8,7 +8,7 @@ int main()
     size_t size;
 
     while (getline(&line, &size, stdin) != -1) {
-        printf("%05u: %s", position++, line);
+        printf("%04u: %s", position++, line);
     }
 
     if (line) free(line);
