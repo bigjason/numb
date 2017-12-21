@@ -1,3 +1,4 @@
+MAKEFLAGS += --silent
 CFLAGS=-g -O2 -Wall -Wextra -Isrc -DNDEBUG $(OPTFLAGS)
 LIBS=-ldl $(OPTLIBS)
 PREFIX?=/usr/local
@@ -26,12 +27,12 @@ $(EXE_TARGET): $(TARGET) $(OBJECTS)
 	$(CC) -o $(EXE_TARGET) $(OBJECTS)
 
 build:
-	@mkdir -p build
-	@mkdir -p bin
+	mkdir -p build
+	mkdir -p bin
 
 # The Cleaner
 clean:
-	rm -rf build $(OBJECTS)
-	rm -f tests/tests.log
-	find . -name "*.gc*" -exec rm {} \;
-	rm -rf `find . -name "*.dSYM" -print`
+	rm -rfv build $(OBJECTS)
+	rm -fv tests/tests.log
+	find . -name "*.gc*" -exec rm -v {} \;
+	rm -rfv `find . -name "*.dSYM" -print`
